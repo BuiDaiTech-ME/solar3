@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Điện Đại Solar | Kỹ Sư Bùi Hữu Đại</title>
+  <style>
+    :root { --primary: #0a3d62; --secondary: #e58e26; --light: #f4f7f9; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 0; color: #333; background: #fff; line-height: 1.5; padding-bottom: 70px; }
+    header { background: var(--primary); color: white; padding: 40px 15px; text-align: center; }
+    header h1 { margin: 0; font-size: 26px; }
+    header p { margin: 8px 0 0; font-size: 15px; }
+
+    section { padding: 25px 15px; max-width: 600px; margin: auto; }
+    h2 { color: var(--primary); font-size: 20px; border-left: 4px solid var(--secondary); padding-left: 10px; }
+
+    .intro-box { background: var(--light); padding: 15px; border-radius: 10px; }
+
+    .service-card { border: 1px solid #eee; padding: 15px; border-radius: 10px; margin-bottom: 12px; }
+    .service-card h3 { margin: 0 0 5px; color: var(--secondary); }
+
+    .calc-area { background: #0a3d62; color: white; border-radius: 15px; padding: 20px; text-align: center; }
+    input { width: 100%; padding: 15px; border-radius: 8px; border: none; margin: 15px 0; }
+    .btn-calc { width: 100%; background: var(--secondary); color: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; }
+
+    #output { margin-top: 20px; background: white; color: #333; padding: 15px; border-radius: 8px; display: none; }
+
+    .contact-bar { position: fixed; bottom: 0; left: 0; width: 100%; display: flex; }
+    .contact-bar a { flex: 1; text-align: center; padding: 18px; text-decoration: none; color: white; font-weight: bold; }
+    .btn-call { background: #28a745; }
+    .btn-zalo { background: #0084ff; }
+
+    footer { text-align: center; padding: 30px; font-size: 13px; color: #999; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>ĐIỆN ĐẠI SOLAR</h1>
+  <p>Kỹ sư Bùi Hữu Đại</p>
+  <p><b>30 năm kinh nghiệm điện công nghiệp & điện mặt trời</b></p>
+</header>
+
+<section>
+  <h2>Giới thiệu</h2>
+  <div class="intro-box">
+    Chuyên thi công điện công nghiệp, trạm biến áp và hệ thống điện mặt trời có lưu trữ. Cam kết an toàn – bền vững – tối ưu chi phí.
+  </div>
+</section>
+
+<section>
+  <h2>Dịch vụ</h2>
+  <div class="service-card">
+    <h3>Điện mặt trời Hybrid</h3>
+    <p>Giải pháp có pin lưu trữ – dùng điện 24/7 không lo mất điện.</p>
+  </div>
+  <div class="service-card">
+    <h3>Điện công nghiệp</h3>
+    <p>Thi công tủ điện, trạm biến áp, hệ thống nhà xưởng.</p>
+  </div>
+</section>
+
+<section>
+  <div class="calc-area">
+    <h3>Tính nhanh hệ điện mặt trời</h3>
+    <input type="number" id="bill" placeholder="Nhập tiền điện (VD: 3000000)">
+    <button class="btn-calc" onclick="calculate()">TÍNH NGAY</button>
+    <div id="output"></div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Bùi Hữu Đại - Hải Phòng
+</footer>
+
+<div class="contact-bar">
+  <a href="tel:0838933628" class="btn-call">📞 Gọi ngay</a>
+  <a href="https://zalo.me/0838933628" class="btn-zalo">💬 Zalo</a>
+</div>
+
+<script>
+function calculate() {
+  var bill = document.getElementById('bill').value;
+  if (!bill || bill <= 0) {
+    alert("Nhập tiền điện!");
+    return;
+  }
+
+  var kwp = (bill / 300000).toFixed(1);
+  var total = kwp * 10000000;
+  var payback = (total / bill / 12).toFixed(1);
+
+  document.getElementById('output').style.display = 'block';
+  document.getElementById('output').innerHTML =
+    "Công suất: " + kwp + " kWp<br>" +
+    "Chi phí: " + total.toLocaleString() + " VNĐ<br>" +
+    "Hoàn vốn: ~" + payback + " năm";
+}
+</script>
+
+</body>
+</html>
